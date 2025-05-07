@@ -1,5 +1,5 @@
 // @ts-check
 
-import half from './src/half.js'
+import search from './src/search.js'
 
-export default half
+export default search
