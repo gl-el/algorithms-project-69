@@ -1,0 +1,53 @@
+{
+  "name": "@hexlet/nodejs-package",
+  "version": "0.0.3",
+  "description": "Node.js boilerplate package",
+  "bin": {
+    "nodejs-package": "bin/nodejs-package.js"
+  },
+  "simple-git-hooks": {
+    "pre-push": "npx lint-staged"
+  },
+  "engines": {
+    "node": ">=21"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hexlet-boilerplates/nodejs-package.git"
+  },
+  "author": "Kirill Mokevnin",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hexlet-boilerplates/nodejs-package/issues"
+  },
+  "type": "module",
+  "homepage": "https://github.com/hexlet-boilerplates/nodejs-package#readme",
+  "dependencies": {
+    "@stylistic/eslint-plugin": "^4.1.0",
+    "debug": "^4.4.0",
+    "es-toolkit": "^1.32.0",
+    "jiti": "^2.4.2",
+    "vitest": "^3.0.7"
+  },
+  "lint-staged": {
+    "*.js": "eslint --fix"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.3.0",
+    "@eslint/js": "^9.21.0",
+    "@vitest/coverage-v8": "^3.1.1",
+    "eslint": "^9.21.0",
+    "eslint-plugin-import": "^2.31.0",
+    "globals": "^16.0.0",
+    "lint-staged": "^15.4.3",
+    "npm-check-updates": "^17.1.15",
+    "release-it": "^18.1.2",
+    "simple-git-hooks": "^2.11.1",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.25.0"
+  }
+}
