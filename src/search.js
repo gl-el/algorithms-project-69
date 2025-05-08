@@ -3,22 +3,31 @@
  * @param {string} term
  */
 const search = (docs, term) => {
-  const cleanTerm = term.match(/\w+/g)?.[0].toLowerCase();
+  const cleanTerm = term.match(/\w+/g)?.[0].toLowerCase()
 
-  if (!docs || !term || !cleanTerm) return [];
+  if (!docs || !term || !cleanTerm) return []
 
-  return docs.reduce((acc, {id, text}) => {
-    const words = text.match(/\w+/g)?.map(i => i.toLowerCase());
-    if (!words) return acc;
+  return docs.reduce((acc, { id, text }) => {
+    const words = text.match(/\w+/g);
+    if (!words) return acc
 
-    const filtered = words.filter(word => word === cleanTerm);
-    if (!filtered.length) return acc;
+    const wordFreqMap = new Map()
 
-    acc.push({id, count: filtered.length});
-    return acc;
+    words.forEach((word) => {
+      const key = word.toLowerCase()
+      wordFreqMap.set(key, (wordFreqMap.get(key) || 0) + 1)
+    })
+
+    const wordCount = wordFreqMap.get(cleanTerm);
+
+    if (!wordCount) return acc
+
+    acc.push({ id, count: wordCount })
+
+    return acc
   }, [])
     .sort((a, b) => b.count - a.count)
-    .map((item) => item.id);
+    .map(({ id }) => id);
 }
 
-export default search;
+export default search
