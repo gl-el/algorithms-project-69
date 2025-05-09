@@ -3,12 +3,14 @@
  * @param {string} term
  */
 const search = (docs, term) => {
-  const cleanTerm = term.match(/\w+/g)?.[0].toLowerCase()
+  const cleanTerms = term.match(/\w+/g)?.map(term => term.toLowerCase())
 
-  if (!docs || !term || !cleanTerm) return []
+  if (!docs || !term || !cleanTerms?.length) return []
+
+  const totalTerms = cleanTerms.length
 
   return docs.reduce((acc, { id, text }) => {
-    const words = text.match(/\w+/g);
+    const words = text.match(/\w+/g)
     if (!words) return acc
 
     const wordFreqMap = new Map()
@@ -18,16 +20,27 @@ const search = (docs, term) => {
       wordFreqMap.set(key, (wordFreqMap.get(key) || 0) + 1)
     })
 
-    const wordCount = wordFreqMap.get(cleanTerm);
+    let termFrequencySum = 0
+    let uniqueTermMatches = 0
 
-    if (!wordCount) return acc
+    cleanTerms.forEach((term) => {
+      const wordsCount = wordFreqMap.get(term)
+      if (wordsCount) {
+        termFrequencySum += wordsCount || 0
+        uniqueTermMatches += 1
+      }
+    })
 
-    acc.push({ id, count: wordCount })
+    const count = termFrequencySum * (uniqueTermMatches / totalTerms)
+
+    if (!count) return acc
+
+    acc.push({ id, count })
 
     return acc
   }, [])
     .sort((a, b) => b.count - a.count)
-    .map(({ id }) => id);
+    .map(({ id }) => id)
 }
 
 export default search
