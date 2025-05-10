@@ -1,5 +1,5 @@
 // @ts-check
 
-import search from './src/search.js'
+import index from './src/index.js'
 
-export default search
+export default index
