@@ -10,33 +10,24 @@
   },
   "scripts": {
     "test": "vitest run",
-    "test:watch": "vitest"
+    "test:watch": "vitest",
+    "prettier": "prettier --write --ignore-unknown src/**/*.*"
   },
   "author": "Gleb E",
   "license": "ISC",
   "type": "module",
   "dependencies": {
-    "@stylistic/eslint-plugin": "^4.1.0",
-    "debug": "^4.4.0",
-    "es-toolkit": "^1.32.0",
-    "jiti": "^2.4.2",
     "vitest": "^3.0.7"
   },
   "lint-staged": {
     "*.js": "eslint --fix"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3.3.0",
-    "@eslint/js": "^9.21.0",
-    "@vitest/coverage-v8": "^3.1.1",
-    "eslint": "^9.21.0",
+    "eslint": "^8.57.1",
+    "eslint-config-airbnb-base": "^15.0.0",
     "eslint-plugin-import": "^2.31.0",
-    "globals": "^16.0.0",
     "lint-staged": "^15.4.3",
-    "npm-check-updates": "^17.1.15",
-    "release-it": "^18.1.2",
-    "simple-git-hooks": "^2.11.1",
-    "typescript": "^5.7.3",
-    "typescript-eslint": "^8.25.0"
+    "prettier": "^3.5.3",
+    "simple-git-hooks": "^2.11.1"
   }
 }

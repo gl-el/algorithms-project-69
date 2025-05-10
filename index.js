@@ -1,5 +1,5 @@
 // @ts-check
 
-import index from './src/index.js'
+import index from './src/index';
 
-export default index
+export default index;
